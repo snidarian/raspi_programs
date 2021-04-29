@@ -11,11 +11,14 @@ sudo apt update && sudo apt upgrade
 # Install Apache
 sudo apt install apache2
 
+# installing apache will create a folder called 'www' in the /var/ directory. In that folder it creates a directory names 'html'. We need to now give our 'pi' user ownership of those directories because they are created with root ownership originally.
+
 
 # Recursively (for the whole folder) change ownership to user 'pi' and group 'www-data'
 sudo chown -R pi:www-data /var/www/html/
 
 # change rwx permissions for the '/var/www/html/' folder
+# add rwx for user and group (www-data)
 sudo chmod -R 770 /var/www/html/
 
 
