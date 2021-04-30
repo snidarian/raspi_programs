@@ -118,4 +118,6 @@ sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 
 
 
+# this was originally sourced from https://howtoraspberrypi.com/how-to-install-web-server-raspberry-pi-lamp/
+
 
