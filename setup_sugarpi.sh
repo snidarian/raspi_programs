@@ -5,6 +5,10 @@
 # enable the i2c interface in raspi-config
 # sudo raspi-config
 
+# Information about interacting with the server and settuping the module
+# https://github.com/PiSugar/PiSugar/wiki/PiSugar-Power-Manager-(Software)
+
+
 
 # run the following script on your pi
 curl http://cdn.pisugar.com/release/Pisugar-power-manager.sh | sudo bash
