@@ -11,7 +11,7 @@ curl http://cdn.pisugar.com/release/Pisugar-power-manager.sh | sudo bash
 
 
 # test if the sugar-pi server is running
-# echo "get battery" | nc -q 0 127.0.0.1 8423
+echo "get battery" | nc -q 0 127.0.0.1 8423
 
 
 
