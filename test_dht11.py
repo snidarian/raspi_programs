@@ -2,11 +2,17 @@
 
 
 import Adafruit_DHT as afd
+import RPi as GPIO
 import time
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(23, GPIO.OUT)
+GPIO.setup(24, GPIO.OUT)
 
 
 DHT_SENSOR = afd.DHT11
-DHT_PIN = 4
+DHT_PIN = 7
 
 while True:
     humidity, temperature = afd.read(DHT_SENSOR, DHT_PIN)
