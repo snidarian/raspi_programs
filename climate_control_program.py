@@ -17,9 +17,7 @@ GPIO.setup(18, GPIO.OUT)
 R, G, B = 32, 12, 33
 PINS = [R,G,B]
 
-#GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
-#GPIO.setup(32, GPIO.OUT, initial=GPIO.HIGH)
-#GPIO.setup(33, GPIO.OUT, initial=GPIO.HIGH)
+GPIO.setup(PINS, GPIO.OUT, initial=GPIO.LOW)
 
 
 # Setup RGB GPIO data out pins
@@ -29,10 +27,13 @@ blue = GPIO.PWM(B, 50)
 
 
 def rgb_temp_indicator(temp) -> None:
-    print(f"temp passed : {temp}")
-    print(type(temp))
+    red.start(0)
+    green.start(0)
+    blue.start(0)
+    # change to fahrenheit
+    temp = ((1.8 * temp) + 32)
     ideal_temp = 73
-    precision = 2
+    precision = 3
     # if the temperature is within {precision} show pure green color
     if ((abs(temp - ideal_temp)) <= precision):
         green.ChangeDutyCycle(100)
@@ -60,26 +61,25 @@ DHT_PIN = 4
 
 
 # main loop
-while True:
-    humidity, temperature = afd.read(DHT_SENSOR, DHT_PIN)
-    if humidity is not None and temperature is not None:
-        print("Temp = {0:0.1f}C, Humidity = {1:0.1f}%".format(temperature, humidity))
-        rgb_temp_indicator(temperature)
-        GPIO.output(16, GPIO.HIGH)
-        time.sleep(.1)
-        GPIO.output(16, GPIO.LOW)
-        time.sleep(2)
-    else:
-        print("Sensor Slur (or ill-performed wiring)");
-        GPIO.output(18, GPIO.HIGH)
-        time.sleep(.5)
-        GPIO.output(18, GPIO.LOW)
-        time.sleep(2)
+def main():
+    while True:
+        humidity, temperature = afd.read(DHT_SENSOR, DHT_PIN)
+        if humidity is not None and temperature is not None:
+            fahrenheit = ((1.8 * temperature) + 32)
+            print("Temp = {0:0.1f}C, Humidity = {1:0.1f}%".format(fahrenheit, humidity))
+            rgb_temp_indicator(temperature)
+            GPIO.output(16, GPIO.HIGH)
+            time.sleep(.1)
+            GPIO.output(16, GPIO.LOW)
+            time.sleep(2)
+        else:
+            print("Sensor Slur (or ill-performed wiring)");
+            GPIO.output(18, GPIO.HIGH)
+            time.sleep(.5)
+            GPIO.output(18, GPIO.LOW)
+            time.sleep(2)
         
 
+main()
+
 GPIO.cleanup()
-
-
-
-
-
