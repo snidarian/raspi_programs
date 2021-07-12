@@ -26,6 +26,9 @@ def beep():
     # length of pause after beep
     time.sleep(.1)
 
+def pause():
+    time.sleep(.5)
+
 
 # set two global variables 'blip' and 'beep'
 # blip represents dots and beep represents dashes.
@@ -34,9 +37,9 @@ def beep():
 
 # dictionary of lists (Each letter and its beep lengths)
 morse_alphabet = {
-    "a" : [blip(), beep()],
-    "b" : [beep(), blip(), blip(), blip()],
-    "c" : [blip(), beep(), blip(), beep()],
+    "a" : [blip(), beep(), pause()],
+    "b" : [beep(), blip(), blip(), blip(), pause()],
+    "c" : [blip(), beep(), blip(), beep(), pause()],
 }
 
 
