@@ -28,7 +28,6 @@ def color_test(channel, frequency, speed, step):
             p.ChangeDutyCycle(duty_cycle)
             time.sleep(speed)
 
-
 def color_test_thread():
     threads = []
     threads.append(threading.Thread(target=color_test, args=(R, 300, 0.02, 5)))
