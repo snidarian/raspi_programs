@@ -71,7 +71,7 @@ morse_alphabet = {
 
 
 def main():
-    text_message = "Red hawk has taken the blue lawn gnome"
+    text_message = "red hawk has taken the blue lawn gnome"
     for letter in text_message:
         print(letter)
         morse_alphabet[letter]
