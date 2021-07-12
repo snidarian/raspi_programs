@@ -30,9 +30,9 @@ def beep():
 
 # dictionary of lists (Each letter and its beep lengths)
 morse_alphabet = {
-    "a" : [blip, beep],
-    "b" : [beep, blip, blip, blip],
-    "c" : [blip, beep, blip, beep],
+    "a" : [blip(), beep()],
+    "b" : [beep(), blip(), blip(), blip()],
+    "c" : [blip(), beep(), blip(), beep()],
 }
 
 
