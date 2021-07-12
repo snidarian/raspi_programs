@@ -32,6 +32,9 @@ def letter_pause():
 def word_pause():
     time.sleep(.8)
 
+def sentence_pause():
+    time.sleep(2)
+
 # set two global variables 'blip' and 'beep'
 # blip represents dots and beep represents dashes.
 #blip = make_blip()
@@ -39,42 +42,42 @@ def word_pause():
 
 # dictionary of lists (Each letter and its beep lengths)
 morse_alphabet = {
-    "a" : [blip(), beep(), letter_pause()],
-    "b" : [beep(), blip(), blip(), blip(), letter_pause()],
-    "c" : [blip(), beep(), blip(), beep(), letter_pause()],
-    "d" : [beep(), blip(), blip(), letter_pause()],
-    "e" : [blip(), letter_pause()],
-    "f" : [blip(), blip(), beep(), blip(), letter_pause()],
-    "g" : [beep(), beep(), blip(), letter_pause()],
-    "h" : [blip(), blip(), blip(), blip(), letter_pause()],
-    "i" : [blip(), blip(), letter_pause()],
-    "j" : [blip(), beep(), beep(), beep(), letter_pause()],
-    "k" : [beep(), blip(), beep(), letter_pause],
-    "l" : [blip(), beep(), blip(), blip(), letter_pause],
-    "m" : [beep(), beep(), letter_pause()],
-    "n" : [beep(), blip(), letter_pause()],
-    "o" : [beep(), beep(), beep(), letter_pause()],
-    "p" : [blip(), beep(), beep(), blip(), letter_pause()],
-    "q" : [beep(), beep(), blip(), beep(), letter_pause()],
-    "r" : [blip(), beep(), blip(), letter_pause()],
-    "s" : [blip(), blip(), blip(), letter_pause()],
-    "t" : [beep(), letter_pause()],
-    "u" : [blip(), blip(), beep(), letter_pause()],
-    "v" : [blip(), blip(), blip(), beep(), letter_pause],
-    "w" : [blip(), beep(), beep(), letter_pause()],
-    "x" : [beep(), blip(), blip(), beep(), letter_pause()],
-    "y" : [beep(), blip(), beep(), beep(), letter_pause()],
-    "z" : [beep(), beep(), blip(), blip(), letter_pause()],
-    "." : [word_pause()],
-    " " : [word_pause()]
+    "a" : [blip, beep, letter_pause],
+    "b" : [beep, blip, blip, blip, letter_pause],
+    "c" : [blip, beep, blip, beep, letter_pause],
+    # "d" : [beep(), blip(), blip(), letter_pause()],
+    # "e" : [blip(), letter_pause()],
+    # "f" : [blip(), blip(), beep(), blip(), letter_pause()],
+    # "g" : [beep(), beep(), blip(), letter_pause()],
+    # "h" : [blip(), blip(), blip(), blip(), letter_pause()],
+    # "i" : [blip(), blip(), letter_pause()],
+    # "j" : [blip(), beep(), beep(), beep(), letter_pause()],
+    # "k" : [beep(), blip(), beep(), letter_pause],
+    # "l" : [blip(), beep(), blip(), blip(), letter_pause],
+    # "m" : [beep(), beep(), letter_pause()],
+    # "n" : [beep(), blip(), letter_pause()],
+    # "o" : [beep(), beep(), beep(), letter_pause()],
+    # "p" : [blip(), beep(), beep(), blip(), letter_pause()],
+    # "q" : [beep(), beep(), blip(), beep(), letter_pause()],
+    # "r" : [blip(), beep(), blip(), letter_pause()],
+    # "s" : [blip(), blip(), blip(), letter_pause()],
+    # "t" : [beep(), letter_pause()],
+    # "u" : [blip(), blip(), beep(), letter_pause()],
+    # "v" : [blip(), blip(), blip(), beep(), letter_pause],
+    # "w" : [blip(), beep(), beep(), letter_pause()],
+    # "x" : [beep(), blip(), blip(), beep(), letter_pause()],
+    # "y" : [beep(), blip(), beep(), beep(), letter_pause()],
+    # "z" : [beep(), beep(), blip(), blip(), letter_pause()],
+    # "." : [sentence_pause()],
+    # " " : [word_pause()]
 }
 
 
 def main():
-    text_message = "red hawk has taken the blue lawn gnome"
+    text_message = "abc"
     for letter in text_message:
         print(letter)
-        morse_alphabet[letter]
+        morse_alphabet[letter]()
 
 
 
