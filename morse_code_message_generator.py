@@ -43,8 +43,8 @@ def sentence_pause():
 # dictionary of lists (Each letter and its beep lengths)
 morse_alphabet = {
     "a" : [blip, beep, letter_pause],
-    # "b" : [beep(), blip(), blip(), blip(), letter_pause()],
-    # "c" : [blip(), beep(), blip(), beep(), letter_pause()],
+    "b" : [beep, blip, blip, blip, letter_pause],
+    "c" : [blip, beep, blip, beep, letter_pause],
     # "d" : [beep(), blip(), blip(), letter_pause()],
     # "e" : [blip(), letter_pause()],
     # "f" : [blip(), blip(), beep(), blip(), letter_pause()],
@@ -74,7 +74,7 @@ morse_alphabet = {
 
 
 def main():
-    text_message = "aaa"
+    text_message = "abccba"
     for letter in text_message:
         print(letter)
         for function_item in morse_alphabet[letter]:
