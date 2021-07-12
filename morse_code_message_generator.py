@@ -8,7 +8,7 @@ import time
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
-GPIO.setup(7, GPIO.OUT)
+GPIO.setup(7, GPIO.OUT, initial=GPIO.LOW)
 
 
 # two functions for blip and beep that make the sound when called
@@ -37,9 +37,10 @@ morse_alphabet = {
 
 
 def main():
-    text_message = input("Type a text message to convert to morse code: ")
+    text_message = "abc"
     for letter in text_message:
-        print(morse_alphabet[letter])
+        print(letter)
+        #print(morse_alphabet[letter])
 
 
 
