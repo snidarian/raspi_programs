@@ -45,49 +45,48 @@ morse_alphabet = {
     "a" : [blip, beep, letter_pause],
     "b" : [beep, blip, blip, blip, letter_pause],
     "c" : [blip, beep, blip, beep, letter_pause],
-    # "d" : [beep(), blip(), blip(), letter_pause()],
-    # "e" : [blip(), letter_pause()],
-    # "f" : [blip(), blip(), beep(), blip(), letter_pause()],
-    # "g" : [beep(), beep(), blip(), letter_pause()],
-    # "h" : [blip(), blip(), blip(), blip(), letter_pause()],
-    # "i" : [blip(), blip(), letter_pause()],
-    # "j" : [blip(), beep(), beep(), beep(), letter_pause()],
-    # "k" : [beep(), blip(), beep(), letter_pause],
-    # "l" : [blip(), beep(), blip(), blip(), letter_pause],
-    # "m" : [beep(), beep(), letter_pause()],
-    # "n" : [beep(), blip(), letter_pause()],
-    # "o" : [beep(), beep(), beep(), letter_pause()],
-    # "p" : [blip(), beep(), beep(), blip(), letter_pause()],
-    # "q" : [beep(), beep(), blip(), beep(), letter_pause()],
-    # "r" : [blip(), beep(), blip(), letter_pause()],
-    # "s" : [blip(), blip(), blip(), letter_pause()],
-    # "t" : [beep(), letter_pause()],
-    # "u" : [blip(), blip(), beep(), letter_pause()],
-    # "v" : [blip(), blip(), blip(), beep(), letter_pause],
-    # "w" : [blip(), beep(), beep(), letter_pause()],
-    # "x" : [beep(), blip(), blip(), beep(), letter_pause()],
-    # "y" : [beep(), blip(), beep(), beep(), letter_pause()],
-    # "z" : [beep(), beep(), blip(), blip(), letter_pause()],
-    # "." : [sentence_pause()],
-    # " " : [word_pause()]
+    "d" : [beep, blip, blip, letter_pause],
+    "e" : [blip, letter_pause],
+    "f" : [blip, blip, beep, blip, letter_pause],
+    "g" : [beep, beep, blip, letter_pause],
+    "h" : [blip, blip, blip, blip, letter_pause],
+    "i" : [blip, blip, letter_pause],
+    "j" : [blip, beep, beep, beep, letter_pause],
+    "k" : [beep, blip, beep, letter_pause],
+    "l" : [blip, beep, blip, blip, letter_pause],
+    "m" : [beep, beep, letter_pause],
+    "n" : [beep, blip, letter_pause],
+    "o" : [beep, beep, beep, letter_pause],
+    "p" : [blip, beep, beep, blip, letter_pause],
+    "q" : [beep, beep, blip, beep, letter_pause],
+    "r" : [blip, beep, blip, letter_pause],
+    "s" : [blip, blip, blip, letter_pause],
+    "t" : [beep, letter_pause],
+    "u" : [blip, blip, beep, letter_pause],
+    "v" : [blip, blip, blip, beep, letter_pause],
+    "w" : [blip, beep, beep, letter_pause],
+    "x" : [beep, blip, blip, beep, letter_pause],
+    "y" : [beep, blip, beep, beep, letter_pause],
+    "z" : [beep, beep, blip, blip, letter_pause],
+    "." : [sentence_pause],
+    " " : [word_pause]
 }
 
 
-def main():
-    text_message = "abccba"
+def main(message_for_conversion):
+    text_message = message_for_conversion
     for letter in text_message:
         print(letter)
         for function_item in morse_alphabet[letter]:
             function_item()
-        # morse_alphabet[letter][0]()
-        # morse_alphabet[letter][1]()
-        # morse_alphabet[letter][2]()
 
 
 
 
 if __name__ == '__main__':
-    main()
+    print("Attach LED and beeper to data BOARD pin seven and ground...")
+    message = input("Type message to convert to morse code: ")
+    main(message)
     GPIO.cleanup()
 
 
