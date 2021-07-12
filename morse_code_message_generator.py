@@ -80,8 +80,6 @@ def main():
         morse_alphabet[letter][0]()
         morse_alphabet[letter][1]()
         morse_alphabet[letter][2]()
-        
-
 
 
 
