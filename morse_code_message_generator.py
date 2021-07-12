@@ -74,7 +74,7 @@ def main():
     text_message = "Red hawk has taken the blue lawn gnome"
     for letter in text_message:
         print(letter)
-        #print(morse_alphabet[letter])
+        morse_alphabet[letter]
 
 
 
