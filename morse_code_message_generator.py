@@ -27,7 +27,7 @@ def beep():
     time.sleep(.1)
 
 def letter_pause():
-    time.sleep(.5)
+    time.sleep(.6)
 
 def word_pause():
     time.sleep(.8)
