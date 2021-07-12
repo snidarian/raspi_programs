@@ -77,9 +77,11 @@ def main():
     text_message = "aaa"
     for letter in text_message:
         print(letter)
-        morse_alphabet[letter][0]()
-        morse_alphabet[letter][1]()
-        morse_alphabet[letter][2]()
+        for function_item in morse_alphabet[letter]:
+            function_item()
+        # morse_alphabet[letter][0]()
+        # morse_alphabet[letter][1]()
+        # morse_alphabet[letter][2]()
 
 
 
