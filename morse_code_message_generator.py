@@ -17,14 +17,14 @@ def blip():
     time.sleep(.1)
     GPIO.output(7, GPIO.LOW)
     # length of pause after blip
-    time.sleep(.2)
+    time.sleep(.1)
 
 def beep():
     GPIO.output(7, GPIO.HIGH)
     time.sleep(.3)
     GPIO.output(7, GPIO.LOW)
     # length of pause after beep
-    time.sleep(.2)
+    time.sleep(.1)
 
 
 # set two global variables 'blip' and 'beep'
