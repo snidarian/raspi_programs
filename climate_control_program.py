@@ -56,8 +56,10 @@ def rgb_temp_indicator(temp) -> None:
         time.sleep(1)
 
 # Setup pins for DTH11 sensor interface
-DHT_SENSOR = afd.DHT11
+DHT_SENSOR = afd.DHT22
+# Note that this means BCM gpio pin 4 which is board pin 7
 DHT_PIN = 4
+
 
 
 # main loop
@@ -66,7 +68,7 @@ def main():
         humidity, temperature = afd.read(DHT_SENSOR, DHT_PIN)
         if humidity is not None and temperature is not None:
             fahrenheit = ((1.8 * temperature) + 32)
-            print("Temp = {0:0.1f}C, Humidity = {1:0.1f}%".format(fahrenheit, humidity))
+            print("Temp = {0:0.1f}F, Humidity = {1:0.1f}%".format(fahrenheit, humidity))
             rgb_temp_indicator(temperature)
             GPIO.output(16, GPIO.HIGH)
             time.sleep(.1)
