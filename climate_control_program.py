@@ -29,7 +29,7 @@ cursor = connection.cursor()
 
 # temp/hum sensor = 7
 # any 5v and GND pins
-# R,G,B = 32, 12, 33
+# R,G,B = 31, 32, 33
 # R&G status indicator LEDS plus beeper: green = 16, red =18
 
 # initialize all gpio pins
@@ -39,7 +39,7 @@ GPIO.setwarnings(False)
 GPIO.setup(16, GPIO.OUT)
 GPIO.setup(18, GPIO.OUT)
 # Pulse width modulation pins on data out
-R, G, B = 32, 12, 33
+R, G, B = 31, 32, 33
 PINS = [R,G,B]
 
 GPIO.setup(PINS, GPIO.OUT, initial=GPIO.LOW)
