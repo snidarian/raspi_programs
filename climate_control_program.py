@@ -32,7 +32,7 @@ GPIO.setup(18, GPIO.OUT)
 R, G, B = 32, 12, 33
 PINS = [R,G,B]
 
-GPIO.setup(PINS, GPIO.OUT, initial=GPI
+GPIO.setup(PINS, GPIO.OUT, initial=GPI)
 
 # Setup RGB GPIO data out pins
 red = GPIO.PWM(R, 50)
