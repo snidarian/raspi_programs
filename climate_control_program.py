@@ -7,7 +7,15 @@ import threading
 import time
 
 
-# initial all gpio pins
+# pin setup (corresponding to BOARD pin numbering not BCM numbering)
+
+# temp/hum sensor = 7
+# any 5v and GND pins
+# R,G,B = 32, 12, 33
+
+# R, G LEDS plus beeper = green = 16, red =18
+
+# initialize all gpio pins
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
 # green and red LED status light indicators
@@ -79,8 +87,13 @@ def main():
             time.sleep(.5)
             GPIO.output(18, GPIO.LOW)
             time.sleep(2)
-        
 
-main()
 
-GPIO.cleanup()
+# dunder name dunder main - if KeyboardInterrupt cleanup all GPIO pins before terminating
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:    
+        GPIO.cleanup()
+
+
