@@ -7,6 +7,11 @@ import threading
 import time
 
 
+# setup database connection and table
+
+
+
+
 # pin setup (corresponding to BOARD pin numbering not BCM numbering)
 
 # temp/hum sensor = 7
@@ -66,7 +71,6 @@ def rgb_temp_indicator(temp) -> None:
 DHT_SENSOR = afd.DHT22
 # Note that this means BCM gpio pin 4 which is board pin 7
 DHT_PIN = 4
-
 
 
 # main loop
