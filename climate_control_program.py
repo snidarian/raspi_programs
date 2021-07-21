@@ -79,7 +79,7 @@ DHT_PIN = 4
 def main():
     while True:
         humidity, temperature = afd.read(DHT_SENSOR, DHT_PIN)
-        if humidity is not None and temperature is not None:
+        if humidity is not None and temperature is not None and humidity <= 100:
             fahrenheit = ((1.8 * temperature) + 32)
             print("Temp = {0:0.1f}F, Humidity = {1:0.1f}%".format(fahrenheit, humidity))
             cursor.execute("INSERT INTO temp_hum(Timestamp, temp, humidity) VALUES (NOW(), ?, ?)", (temperature, humidity))
