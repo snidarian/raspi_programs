@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 import random
 import time
 
-
+# wire each BOARD pin to the corresponding LED color
 # pin colors
 R=40
 B=35
@@ -47,12 +47,38 @@ def slow_mo(freq) -> None:
         GPIO.output(pin, GPIO.LOW)
         time.sleep(freq + .5)
 
+def leapfrog(freq) -> None:
+    for pin in [R, G, B, Y, W, W, G, Y, B, R]:
+        GPIO.output(pin, GPIO.HIGH)
+        time.sleep(freq)
+        GPIO.output(pin, GPIO.LOW)
+        time.sleep(freq)
+
+def flash_all(freq) -> None:
+    for pin in PINS:
+        GPIO.output(pin, GPIO.HIGH)
+    time.sleep(freq + .5)
+    for pin in PINS:
+        GPIO.output(pin, GPIO.LOW)
+    time.sleep(freq + .5)
+
+def all_on_onebyone_off(freq) -> None:
+    for pin in PINS:
+        GPIO.output(pin, GPIO.HIGH)
+    time.sleep(freq + 1)
+    for pin in PINS:
+        GPIO.output(pin, GPIO.LOW)
+        time.sleep(freq + 1)
+        
 
 def main(freq) -> None:
     for _ in range(10):
         straight_through(freq)
         there_and_back(freq)
         slow_mo(freq)
+        leapfrog(freq)
+        flash_all(freq)
+        all_on_onebyone_off(freq)
 
 
 
