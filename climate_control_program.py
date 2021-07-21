@@ -3,22 +3,24 @@
 
 import Adafruit_DHT as afd
 import RPi.GPIO as GPIO
+import getpass # for secure password entry
+import mariadb
 import threading
 import time
 
-
+# make sure to create MYSQL user name 'climate_program' with password 'password' with access to 'climate_data' table
 # setup database connection and table
+connection = mariadb.connect(user="climate_program", password="password", host="localhost", port=3306, database="climate_data")
 
-
-
+# generate cursor
+cursor = connection.cursor()
 
 # pin setup (corresponding to BOARD pin numbering not BCM numbering)
 
 # temp/hum sensor = 7
 # any 5v and GND pins
 # R,G,B = 32, 12, 33
-
-# R, G LEDS plus beeper = green = 16, red =18
+# R&G status indicator LEDS plus beeper: green = 16, red =18
 
 # initialize all gpio pins
 GPIO.setmode(GPIO.BOARD)
@@ -80,6 +82,8 @@ def main():
         if humidity is not None and temperature is not None:
             fahrenheit = ((1.8 * temperature) + 32)
             print("Temp = {0:0.1f}F, Humidity = {1:0.1f}%".format(fahrenheit, humidity))
+            cursor.execute("INSERT INTO temp_hum(Timestamp, temp, humidity) VALUES (NOW(), ?, ?)", (temperature, humidity))
+            connection.commit()
             rgb_temp_indicator(temperature)
             GPIO.output(16, GPIO.HIGH)
             time.sleep(.1)
