@@ -4,9 +4,19 @@
 import Adafruit_DHT as afd
 import RPi.GPIO as GPIO
 import getpass # for secure password entry
+import argparse
 import mariadb
 import threading
 import time
+
+
+
+# setup Argumentparser() and parse args
+parser = argparse.ArgumentParser(description="This program controls soldered circuitboard with DHT22, RGBLED, and RGLED status indicator")
+
+args = parser.add_argument("ideal_temp", help="User-set ideal temperature", type=float)
+
+args = parser.parse_args()
 
 # make sure to create MYSQL user name 'climate_program' with password 'password' with access to 'climate_data' table
 # setup database connection and table
@@ -46,7 +56,7 @@ def rgb_temp_indicator(temp) -> None:
     blue.start(0)
     # change to fahrenheit
     temp = ((1.8 * temp) + 32)
-    ideal_temp = 73
+    ideal_temp = args.ideal_temp
     precision = 3
     # if the temperature is within {precision} show pure green color
     if ((abs(temp - ideal_temp)) <= precision):
