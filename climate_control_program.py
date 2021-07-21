@@ -39,7 +39,9 @@ GPIO.setwarnings(False)
 GPIO.setup(16, GPIO.OUT)
 GPIO.setup(18, GPIO.OUT)
 # Pulse width modulation pins on data out
-R, G, B = 31, 32, 33
+R=31
+G=32
+B=33
 PINS = [R,G,B]
 
 GPIO.setup(PINS, GPIO.OUT, initial=GPIO.LOW)
@@ -60,7 +62,7 @@ def rgb_temp_indicator(temp) -> None:
     precision = 3
     # if the temperature is within {precision} show pure green color
     if (abs(temp - ideal_temp) <= precision):
-        print("With precision value of Ideal Temperature")
+        print("Within precision value of Ideal Temperature")
         green.ChangeDutyCycle(100)
         red.ChangeDutyCycle(0)
         blue.ChangeDutyCycle(0)
