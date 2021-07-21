@@ -57,6 +57,7 @@ def rgb_temp_indicator(temp) -> None:
     # change to fahrenheit
     temp = ((1.8 * temp) + 32)
     ideal_temp = args.ideal_temp
+    print(args.ideal_temp)
     precision = 3
     # if the temperature is within {precision} show pure green color
     if ((abs(temp - ideal_temp)) <= precision):
@@ -67,14 +68,14 @@ def rgb_temp_indicator(temp) -> None:
     # Temp + precision is higher than ideal: TOO HOT
     # Red/green color ratio that grows more red and less green as it gets hotter
     elif ((temp - precision) > ideal_temp):
-        green.ChangeDutyCycle(10)
+        green.ChangeDutyCycle(0)
         red.ChangeDutyCycle(100)
         blue.ChangeDutyCycle(0)
         time.sleep(1)
     # Temp - precision is lesser than ideal: TOO COLD
     # Green/green color ratio that grows more blue and less green as it gets colder
     elif ((temp + precision) < ideal_temp):
-        green.ChangeDutyCycle(10)
+        green.ChangeDutyCycle(0)
         blue.ChangeDutyCycle(100)
         red.ChangeDutyCycle(0)
         time.sleep(1)
