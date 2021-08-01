@@ -6,24 +6,8 @@ import RPi.GPIO as GPIO
 import getpass # for secure password entry
 import argparse
 import mariadb
-import threading
 import time
 
-
-
-# setup Argumentparser() and parse args
-parser = argparse.ArgumentParser(description="This program controls soldered circuitboard with DHT22, RGBLED, and RGLED status indicator")
-
-args = parser.add_argument("ideal_temp", help="User-set ideal temperature", type=float)
-
-args = parser.parse_args()
-
-# make sure to create MYSQL user name 'climate_program' with password 'password' with access to 'climate_data' table
-# setup database connection and table
-connection = mariadb.connect(user="climate_program", password="password", host="localhost", port=3306, database="climate_data")
-
-# generate cursor
-cursor = connection.cursor()
 
 # pin setup (corresponding to BOARD pin numbering not BCM numbering)
 
@@ -92,6 +76,17 @@ DHT_PIN = 4
 
 # main loop
 def main():
+    # setup Argumentparser() and parse args
+    parser = argparse.ArgumentParser(description="This program controls soldered circuitboard with DHT22, RGBLED, and RGLED status indicator")
+    args = parser.add_argument("ideal_temp", help="User-set ideal temperature", type=float)
+    args = parser.parse_args()
+
+    # make sure to create MYSQL user name 'climate_program' with password 'password' with access to 'climate_data' table
+    # setup database connection and table
+    connection = mariadb.connect(user="climate_program", password="password", host="localhost", port=3306, database="climate_data")
+    # generate cursor
+    cursor = connection.cursor()
+    
     while True:
         humidity, temperature = afd.read(DHT_SENSOR, DHT_PIN)
         if humidity is not None and temperature is not None and humidity <= 100:
