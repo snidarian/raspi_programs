@@ -20,77 +20,66 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@
-app.route('/') 
+@app.route('/') 
 
 def hello_world():
     return 'Hello, World!'
 
-@
-app.route('/rlon') 
+@app.route('/rlon') 
 
 def redledon():
     GPIO.output(36, GPIO.HIGH)
     return "Red LED on"
 
-@
-app.route('/rloff') 
+@app.route('/rloff') 
 
 def redledoff():
     GPIO.output(36, GPIO.LOW)
     return "Red LED off" 
 
-@
-app.route('/glon')
+@app.route('/glon')
 
 def greenledon():
     GPIO.output(40, GPIO.HIGH)
     return "Green LED on"
 
-@
-app.route('/gloff')
+@app.route('/gloff')
 
 def greenledoff():
     GPIO.output(40, GPIO.LOW)
     return "Green LED off"
 
-@
-app.route('/blon')
+@app.route('/blon')
 
 def blueledon():
     GPIO.output(38, GPIO.HIGH)
     return "Blue LED on"
 
-@
-app.route('/bloff')
+@app.route('/bloff')
 
 def blueledoff():
     GPIO.output(38, GPIO.LOW)
     return "Blue LED off"
 
-@
-app.route('/ylon')
+@app.route('/ylon')
 
 def yellowledon():
     GPIO.output(37, GPIO.HIGH)
     return "Yellow LED on"
 
-@
-app.route('/yloff')
+@app.route('/yloff')
 
 def yellowledoff():
     GPIO.output(37, GPIO.LOW)
     return "Yellow LED off"
 
-@
-app.route('/wlon')
+@app.route('/wlon')
 
 def whiteledon():
     GPIO.output(35, GPIO.HIGH)
     return "White LED on"
 
-@
-app.route('/wloff')
+@app.route('/wloff')
 
 def whiteledoff():
     GPIO.output(35, GPIO.LOW)
