@@ -16,8 +16,7 @@ GPIO.setup(18, GPIO.OUT)
 
 GPIO.setup(27, GPIO.OUT)
 
-from flask
-import Flask
+from flask import Flask
 
 app = Flask(__name__)
 
