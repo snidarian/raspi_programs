@@ -6,17 +6,23 @@ import RPi.GPIO as GPIO
 
 import time
 
+from flask import Flask
+
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setwarnings(False)
 
-GPIO.setup(17, GPIO.OUT) 
+GPIO.setup(35, GPIO.OUT) 
 
-GPIO.setup(18, GPIO.OUT)
+GPIO.setup(36, GPIO.OUT)
 
-GPIO.setup(27, GPIO.OUT)
+GPIO.setup(37, GPIO.OUT)
 
-from flask import Flask
+GPIO.setup(38, GPIO.OUT)
+
+GPIO.setup(40, GPIO.OUT)
+
+
 
 app = Flask(__name__)
 
@@ -88,7 +94,7 @@ def whiteledoff():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0")
 
 
 
