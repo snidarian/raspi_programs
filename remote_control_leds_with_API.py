@@ -8,7 +8,7 @@ import time
 
 from flask import Flask
 
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 
 GPIO.setwarnings(False)
 
